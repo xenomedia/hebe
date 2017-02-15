@@ -13,7 +13,6 @@
         "composer/installers": "^1.0.20",
         "cweagans/composer-patches": "^1.0",
         "drupal-composer/drupal-scaffold": "^2.0.1",
-        "drupal/coder": "^8.2",
         "drupal/config_direct_save": "^1.0",
         "drupal/config_update": "^1.1",
         "drupal/console": "^1.0.0-rc8",
@@ -62,6 +61,7 @@
         "behat/mink-extension": "^2.2",
         "behat/mink-goutte-driver": "^1.2",
         "drupal/drupal-extension": "^3.1",
+        "drupal/coder": "^8.2",
         "drush-ops/behat-drush-endpoint": "^0.0.4",
         "drush/drush": "^8.1",
         "jcalderonzumba/gastonjs": "^1.0.2",
@@ -73,9 +73,6 @@
         "se/selenium-server-standalone": "^3.0",
         "squizlabs/php_codesniffer": "^2.8",
         "symfony/css-selector": "^2.8"
-    },
-    "config": {
-        "bin-dir": "bin/"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -91,21 +88,18 @@
         "build-assets": [
             "./scripts/composer/install-or-update"
         ],
-        "drupal-plugin-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "drupal-unit-tests": "cd web/core && ../../vendor/bin/phpunit --testsuite=unit --exclude-group Composer,DependencyInjection,PageCache",
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "post-install-cmd": [
-            "@drupal-plugin-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "./bin/phing push"
+            "@drupal-scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "./bin/phing push",
-            "./bin/phing package",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-create-project-cmd": [
-            "@drupal-plugin-scaffold",
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
@@ -124,6 +118,7 @@
                 "sites/default/settings.pantheon.php"
             ]
         },
+    "enable-patching": true,
         "patches": {
             "drupal/panelizer": {
                 "2793841 - Properly integrate with Panels IPE": "https://www.drupal.org/files/issues/panelizer-panels-ipe-tempstore-id.patch"
