@@ -91,7 +91,7 @@
         "build-assets": [
             "./scripts/composer/install-or-update"
         ],
-        "drupal-plugin-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        "drupal-plugin-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "drupal-unit-tests": "cd web/core && ../../vendor/bin/phpunit --testsuite=unit --exclude-group Composer,DependencyInjection,PageCache",
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "post-install-cmd": [
