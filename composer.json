@@ -68,6 +68,7 @@
         "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
         "mikey179/vfsstream": "^1.2",
         "pantheon-systems/quicksilver-pushback": "~1",
+        "phing/phing": "^2.14",
         "phpunit/phpunit": "^4.8",
         "se/selenium-server-standalone": "^3.0",
         "squizlabs/php_codesniffer": "^2.8",
@@ -90,10 +91,11 @@
         "build-assets": [
             "./scripts/composer/install-or-update"
         ],
+        "drupal-plugin-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
         "drupal-unit-tests": "cd web/core && ../../vendor/bin/phpunit --testsuite=unit --exclude-group Composer,DependencyInjection,PageCache",
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "post-install-cmd": [
-            "@drupal-scaffold",
+            "@drupal-plugin-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "./bin/phing push"
         ],
@@ -103,7 +105,7 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-create-project-cmd": [
-            "@drupal-scaffold",
+            "@drupal-plugin-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
