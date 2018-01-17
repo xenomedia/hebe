@@ -146,10 +146,6 @@
                 "2814055 - Allow modules to react to replication events": "https://www.drupal.org/files/issues/2814055-2.patch",
                 "2820105 - User references are not replicated": "https://www.drupal.org/files/issues/2820105-10.patch"
             },
-            "drupal/core": {
-                "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138-41.patch",
-                "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-303.patch"
-            },
             "drupal/entity_embed": {
                 "2832504 - Send the CKEditor instance ID to the embed.preview route": "https://www.drupal.org/files/issues/2832504-2.patch"
             },
